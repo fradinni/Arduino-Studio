@@ -1,0 +1,24 @@
+{
+  "name": "ArduIDE",
+  "version": "0.1.0",
+  "author": "Nicolas FRADIN",
+  "description": "Free and Open-Source Arduino IDE",
+  "main": "src/index.html",
+  "dependencies": {
+    "underscore":"x",
+    "mime": "1.2.11",
+    "chokidar": "0.7.0",
+    "serialport": "1.2.5"
+  },
+  "scripts":{
+    "install": "sh ./postinstall.sh"
+  },
+  "window": {
+    "show": true,
+    "toolbar": true,
+    "frame": true,
+    "position": "center",
+    "width": 1200,
+    "height": 675
+  }
+}

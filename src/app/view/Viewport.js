@@ -12,7 +12,8 @@ Ext.define('AS.view.Viewport', {
     'AS.view.MainToolbar',
     'AS.view.components.BoardSelect',
     'AS.view.components.SerialPortSelect',
-    'AS.view.components.BaudRateSelect'
+    'AS.view.components.BaudRateSelect',
+    'AS.view.ProjectsTree'
   ],
   layout: 'border',
 
@@ -34,19 +35,19 @@ Ext.define('AS.view.Viewport', {
 
       // WEST: Projects panel
       {
-        width       : 200,
-        xtype       : 'panel',
+        xtype       : 'projectsTree',
         title       : 'Projects',
         region      : 'west',
-        split       : true,
-        maxWidth    : 300,
+        width       : 200,
         minWidth    : 150,
-        collapsible : true
+        split       : true,
+        collapsible : true,
+        rootVisible : false
       },
 
       // CENTER: Main Panel
       {
-        xtype: 'panel',
+        xtype : 'panel',
         region: 'center'
       }
 

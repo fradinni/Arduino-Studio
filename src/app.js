@@ -6,7 +6,7 @@
 Ext.application({
   name              : 'AS', // Namespace alias for Arduino Studio
   models            : ['Board', 'BaudRate', 'SerialPort'],
-  stores            : ['Boards', 'BaudRates', 'SerialPorts'],
+  stores            : ['Boards', 'BaudRates', 'SerialPorts', 'ProjectsTree'],
 
   // Vars
   serialPortsWatcher: null,
@@ -21,7 +21,7 @@ Ext.application({
     this.initializeStores();
 
     // Initialize Serial Ports Watcher
-    this.serialPortsWatcher = Ext.create('AS.utils.SerialPortsWatcher', {
+    this.serialPortsWatcher = Ext.create('AS.util.SerialPortsWatcher', {
       store: 'serialPortsStore'
     });
     this.serialPortsWatcher.start();
@@ -48,6 +48,11 @@ Ext.application({
     //
     Ext.create('AS.store.SerialPorts', {
       storeId: 'serialPortsStore'
+    });
+
+    // Initialize Files Tree Store
+    Ext.create('AS.store.ProjectsTree', {
+      storeId: 'projectsTreeStore'
     });
   }
 });

@@ -7,13 +7,10 @@
 */
 Ext.define('AS.view.components.BaudRateSelect',  {
 
-  // Main parameters
   extend        : 'Ext.form.field.ComboBox',
   alias         : 'widget.baudRate',
   model         : 'AS.model.BaudRate',
   store         : 'BaudRates',
-
-  // Other parameters
   queryMode     : 'local',
   displayField  : 'name',
   valueField    : 'value',

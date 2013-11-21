@@ -1,7 +1,7 @@
 Arduino Studio
 ===============
 
-##Currently in development...
+###Currently in development...
 
 #Development (For OSX)
 

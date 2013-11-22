@@ -5,11 +5,12 @@
 */
 Ext.application({
   name              : 'AS', // Namespace alias for Arduino Studio
-  models            : ['Board', 'BaudRate', 'SerialPort'],
-  stores            : ['Boards', 'BaudRates', 'SerialPorts', 'ProjectsTree'],
+  models            : ['Board', 'BaudRate'],
+  stores            : ['Boards', 'BaudRates'],
 
   // Vars
-  serialPortsWatcher: null,
+  serialPortsWatcher  : null,
+  systemMenu          : null,
 
   /**
   * Application Start-up
@@ -18,13 +19,16 @@ Ext.application({
     console.log('[Arduino Studio] Initializing...');
 
     // Initialize stores
-    this.initializeStores();
+    this.initializeGlobalStores();
 
     // Initialize Serial Ports Watcher
-    this.serialPortsWatcher = Ext.create('AS.util.SerialPortsWatcher', {
+    this.serialPortsWatcher = Ext.create('AS.util.system.SerialPortsWatcher', {
       store: 'serialPortsStore'
     });
     this.serialPortsWatcher.start();
+
+    // Initialize System menu
+    this.systemMenu = Ext.create('AS.util.system.menu.SystemMenu');
 
     // Create viewport
     console.log('[Arduino Studio] Create viewport...');
@@ -35,17 +39,16 @@ Ext.application({
 
 
   /**
+  * Initialize Global Stores
   *
+  * These stores are not assigned to a local variable
+  * because by specifying a storeId, stores will
+  * be automaticaly registered in StoreManager and
+  * referenced with specified 'storeId'.
   */
-  initializeStores: function() {
+  initializeGlobalStores: function() {
 
     // Initialize Serial Ports Store
-    //
-    // This store is not assigned to a local variable
-    // because by specifying a storeId, this store will
-    // be automaticaly registered in StoreManager and
-    // referenced with specified 'storeId'.
-    //
     Ext.create('AS.store.SerialPorts', {
       storeId: 'serialPortsStore'
     });
@@ -53,6 +56,11 @@ Ext.application({
     // Initialize Files Tree Store
     Ext.create('AS.store.ProjectsTree', {
       storeId: 'projectsTreeStore'
+    });
+
+    // Initialize Recent Files Store
+    Ext.create('AS.store.RecentFiles', {
+      storeId: 'recentFilesStore'
     });
   }
 });

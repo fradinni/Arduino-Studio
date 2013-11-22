@@ -6,6 +6,10 @@ Ext.define('AS.store.BaudRates', {
   extend: 'Ext.data.Store',
   model: 'AS.model.BaudRate',
   autoLoad: true,
+
+  /**
+  * Static data
+  */
   data: [
     { 'value':   300, 'name':'300 bps' },
     { 'value':   600, 'name':'600 bps'},

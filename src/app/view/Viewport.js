@@ -42,7 +42,7 @@ Ext.define('AS.view.Viewport', {
         minWidth    : 150,
         split       : true,
         collapsible : true,
-        rootVisible : false
+        rootVisible : true
       },
 
       // CENTER: Main Panel

@@ -8,7 +8,7 @@ Ext.define('AS.store.Boards', {
   autoLoad: true,
 
   /**
-  * STtaic data
+  * Static data
   */
   data: [
     { 'id': 'uno'     , 'name':'Arduino UNO' },

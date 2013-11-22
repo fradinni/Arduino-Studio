@@ -9,7 +9,7 @@ Arduino Studio
  - NodeJS
  - Ino (automatically installed by npm install)
  - ExtJS 4 (download and put extracted files in src/libs/extjs)
- - Node-Webkit 0.8.x (require for develoment with node-webkit)
+ - Node-Webkit 0.8.x (required for development with node-webkit)
 
 ###Project setup
 ```

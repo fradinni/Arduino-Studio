@@ -19,16 +19,32 @@ Ext.define('AS.util.ConfigManager', {
   */
   constructor: function(config) {
     this.initConfig(config);
-    this.checkConfigFile();
+    this.loadConfigFile();
+  },
+
+  applyFile: function(file) {
+    if(Ext.isString(file)) {
+      return file;
+    }
+  },
+
+  applyContent: function(content) {
+    if(Ext.isObject(content)) {
+      return content;
+    }
   },
 
 
   /**
   *
   */
-  checkConfigFile: function() {
+  loadConfigFile: function() {
     if(!fs.existsSync(this.getFile())) {
+      console.log('[ConfigManager] Create config file: ' + this.getFile());
       this.save();
+    } else {
+      console.log('[ConfigManager] Load config file: ' + this.getFile());
+      this.content = JSON.parse(fs.readFileSync(this.getFile()));
     }
   },
 
@@ -37,7 +53,31 @@ Ext.define('AS.util.ConfigManager', {
   * Save config to disk
   */
   save: function() {
-    fs.writeFileSync(this.getFile(), this.getContent());
+    fs.writeFileSync(this.getFile(), JSON.stringify(this.getContent()));
+  },
+
+
+  /**
+  * Return config file
+  */
+  get: function() {
+    return this.content;
+  },
+
+
+  /**
+  * Get property in current config
+  */
+  getProperty: function(key) {
+    return this.content[key];
+  },
+
+
+  /**
+  * Set property in current config
+  */
+  setProperty: function(key, value) {
+    this.content[key] = value;
   }
 
 });

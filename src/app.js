@@ -11,12 +11,17 @@ Ext.application({
   // Vars
   serialPortsWatcher  : null,
   systemMenu          : null,
+  appConfig           : null,
 
   /**
   * Application Start-up
   */
   launch: function() {
     console.log('[Arduino Studio] Initializing...');
+
+    this.appConfig = Ext.create('AS.util.ConfigManager', {
+      file: './config.json'
+    });
 
     // Initialize stores
     this.initializeGlobalStores();

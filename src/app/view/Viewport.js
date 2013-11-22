@@ -13,26 +13,37 @@ Ext.define('AS.view.Viewport', {
     'AS.view.components.BoardSelect',
     'AS.view.components.SerialPortSelect',
     'AS.view.components.BaudRateSelect',
-    'AS.view.ProjectsTree'
+    'AS.view.ProjectsTree',
+    'AS.view.StatusBar'
   ],
-  layout: 'border',
-
+  layout: 'fit',
 
   /**
   * Initialize viewport
   */
   initComponent: function() {
 
-    this.items = [
+    // we use a fitted inner panel to use the panel's advanced features like dockedItems
+    var viewportPanel = this.items = {
+      layout : 'border'
+    };
 
-      // Main toolbar
-      {
-        xtype           : 'maintoolbar',
-        region          : 'north',
-        split           : true,
-        splitterResize  : false
-      },
+    viewportPanel.dockedItems = [{
+      xtype : 'maintoolbar',
+      dock  : 'top'
+    }, { // fake border
+      xtype : 'box',
+      dockt : 'top',
+      height : 7, // TODO: move to CSS
+      style : {
+        backgroundColor : '#3892d3'
+      }
+    }, {
+      xtype : 'statusbar',
+      dock  : 'bottom'
+    }];
 
+    viewportPanel.items = [
       // WEST: Projects panel
       {
         xtype       : 'projectsTree',
@@ -47,8 +58,8 @@ Ext.define('AS.view.Viewport', {
 
       // CENTER: Main Panel
       {
-        xtype : 'panel',
-        region: 'center'
+        xtype  : 'panel',
+        region : 'center'
       }
 
     ];

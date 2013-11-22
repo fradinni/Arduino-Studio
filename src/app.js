@@ -7,6 +7,7 @@ Ext.application({
   name              : 'AS', // Namespace alias for Arduino Studio
   models            : ['Board', 'BaudRate'],
   stores            : ['Boards', 'BaudRates'],
+  controllers       : ['Main'],
 
   // Vars
   serialPortsWatcher  : null,

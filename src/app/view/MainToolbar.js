@@ -12,21 +12,28 @@ Ext.define('AS.view.MainToolbar',  {
     'AS.view.components.SerialPortSelect'
   ],
 
-
   /**
   * Initialize Main Toolbar
   */
   initComponent : function () {
 
-    this.items = [
-      { text: 'Compile'},
-      { text: 'Upload' },
-      { xtype: 'serialport'},
-      { xtype: 'board'},
-      { xtype: 'baudRate'},
-      '->',
-      { text: 'Serial Monitor'}
-    ];
+    this.items = [{
+      text   : 'Compile',
+      action : 'compile'
+    }, {
+      text   : 'Upload',
+      action : 'upload'
+    }, {
+      xtype  : 'serialport'
+    }, {
+      xtype  : 'board'
+    }, {
+      xtype  : 'baudRate'
+    }, '->', {
+      text   : 'Serial Monitor',
+      action : 'open-serial'
+    }];
+
     this.callParent();
   }
 

@@ -11,6 +11,7 @@ Ext.define('AS.view.Viewport', {
   requires: [
     'AS.view.MainToolbar',
     'AS.view.ProjectsTree',
+    'AS.view.components.CodePanel',
     'AS.view.StatusBar'
   ],
   layout: 'fit',
@@ -75,7 +76,7 @@ Ext.define('AS.view.Viewport', {
        *       multiple rows/columns, tabs, ability to move a tab between
        *       rows/columns...
        */
-      xtype  : 'panel',
+      xtype  : 'codepanel',
       // layout related options
       region : 'center'
     }];

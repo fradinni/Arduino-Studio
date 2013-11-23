@@ -3,6 +3,6 @@
 *
 */
 Ext.define('AS.model.Board', {
-  extend: 'Ext.data.Model',
-  fields: ['id', 'name']
+  extend : 'Ext.data.Model',
+  fields : ['id', 'name']
 });

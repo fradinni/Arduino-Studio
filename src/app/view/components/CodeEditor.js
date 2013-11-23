@@ -21,7 +21,7 @@ Ext.define('AS.view.components.CodeEditor', {
     this.editor = CodeMirror.fromTextArea(this.el.dom, editorConfig);
 
     // when this component is resized, resize the codemirror instance
-    this.on('resize' , function (textArea, w, h) {
+    this.on('resize', function (textArea, w, h) {
       // the editor is resized automatically except for some special elements
       Ext.fly(this.editor.getWrapperElement()).setHeight(h);
       Ext.fly(this.editor.getScrollerElement()).setHeight(h);
@@ -40,7 +40,7 @@ Ext.define('AS.view.components.CodeEditor', {
     }
   },
   getValue : function () {
-    if(this.rendered){
+    if (this.rendered) {
       return this.editor.getValue();
     } else {
       return this.value;

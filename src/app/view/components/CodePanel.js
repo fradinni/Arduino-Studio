@@ -1,22 +1,22 @@
 Ext.define('AS.view.components.CodePanel', {
   extend : 'Ext.Panel',
   alias  : 'widget.codepanel',
-  requires: [
+  requires : [
     'AS.view.components.CodeEditor'
   ],
   layout : 'fit',
 
   initComponent : function () {
     this.dockedItems = [{
-      dock : 'top',
+      dock  : 'top',
       xtype : 'toolbar',
       items : [{
         text : 'some'
-      },{
+      }, {
         text : 'buttons'
       }]
     }, {
-      dock : 'bottom',
+      dock  : 'bottom',
       xtype : 'toolbar',
       items : ['0 errors']
     }];
@@ -30,4 +30,4 @@ Ext.define('AS.view.components.CodePanel', {
     };
     this.callParent();
   }
-})
+});

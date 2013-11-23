@@ -1,7 +1,7 @@
 Ext.define('AS.controller.Main', {
-  extend: 'Ext.app.Controller',
+  extend : 'Ext.app.Controller',
 
-  init: function() {
+  init : function () {
     this.control({
       'viewport maintoolbar button[action=open-serial]': {
         click: this.onOpenSerialClicked
@@ -15,13 +15,13 @@ Ext.define('AS.controller.Main', {
     });
   },
 
-  onOpenSerialClicked: function() {
+  onOpenSerialClicked : function () {
     alert('serial');
   },
-  onCompileClicked: function() {
+  onCompileClicked : function () {
     alert('compile');
   },
-  onUploadClicked: function() {
+  onUploadClicked : function () {
     alert('upload');
   }
 });

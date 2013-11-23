@@ -1,6 +1,6 @@
 {
   "boards": [
-    { "id": "uno", "name":"Arduino UNO" },
-    { "id": "leonardo", "name":"Arduino Leonardo" }
+    { "id" : "uno",      "name" : "Arduino UNO" },
+    { "id" : "leonardo", "name" : "Arduino Leonardo" }
   ]
 }

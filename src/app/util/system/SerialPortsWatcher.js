@@ -7,18 +7,18 @@
 */
 Ext.define('AS.util.system.SerialPortsWatcher', {
 
-  config: {
-    store: null,
-    interval: 2000,
+  config : {
+    store    : null,
+    interval : 2000
   },
 
-  timer: null,
+  timer : null,
 
 
   /**
   * Default constructor
   */
-  constructor: function(config) {
+  constructor : function (config) {
     this.initConfig(config);
   },
 
@@ -26,9 +26,9 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   /**
   * Initialize Store
   */
-  applyStore: function(storeId) {
+  applyStore : function (storeId) {
     var store = Ext.data.StoreManager.lookup(storeId);
-    if(store) {
+    if (store) {
       return store;
     }
   },
@@ -37,9 +37,9 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   /**
   * Initialize Store
   */
-  applyInterval: function(interval) {
-    if(!Ext.isNumber(interval)) {
-      console.log('[SerialPortsWatcher] Error: Interval must be a number !');
+  applyInterval : function (interval) {
+    if (!Ext.isNumber(interval)) {
+      console.log('[SerialPortsWatcher] Error: Interval miust be a number !');
     } else {
       return interval;
     }
@@ -49,20 +49,20 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   /**
   * List available Serial Port on user's machine
   */
-  updateSerialPorts: function() {
+  updateSerialPorts : function () {
     var serialport = require('serialport');
     var scope = this;
 
     serialport.list(function (err, ports) {
-      if(err) {
+      if (err) {
         console.log(err);
       } else {
-        // Retrieve serial ports store
+        // Retrive serial ports store
         var store = scope.getStore();
 
         // Check if ports count has changed
         // if yes, update store
-        if(store.count() !== ports.length) {
+        if (store.count() !== ports.length) {
           scope._updateStore(ports);
           return;
         }
@@ -71,14 +71,14 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
         var hasChanged = false;
 
         // Compare system list with store list
-        ports.forEach(function(port) {
-          if(store.find('name', port.comName) === -1) {
+        ports.forEach(function (port) {
+          if (store.find('name', port.comName) === -1) {
             hasChanged = true;
           }
         });
 
         // If content has changed update store
-        if(hasChanged) {
+        if (hasChanged) {
           scope._updateStore(ports);
         }
       }
@@ -90,18 +90,18 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   * Update store content
   * @param ports {Array} List of serial ports
   */
-  _updateStore: function(ports) {
+  _updateStore : function (ports) {
 
     console.log('[SerialPortsWatcher] Update store with ports list: ', ports);
 
-    // Retrieve serial ports store
+    // Retrieve serial ports strore
     var store = this.getStore();
 
     // Remove all items
     store.removeAll();
 
     // Fill store with new serial ports
-    ports.forEach(function(port) {
+    ports.forEach(function (port) {
       store.add(Ext.create('AS.model.SerialPort', { name: port.comName }));
     });
   },
@@ -110,11 +110,9 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   /**
   * Start serial sorts watching
   */
-  start: function() {
+  start : function () {
     this.updateSerialPorts();
-    this.timer = setInterval((function() {
-      this.updateSerialPorts();
-    }).bind(this), this.getInterval());
+    this.timer = setInterval(this.updateSerialPorts.bind(this), this.getInterval());
     console.log('[SerialPortsWatcher] Watcher started ! Interval is set to ' + this.getInterval() + 'ms.');
   },
 
@@ -122,7 +120,7 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   /**
   * Stop serial ports watching
   */
-  stop: function() {
+  stop : function () {
     clearInterval(this.timer);
   }
 

@@ -7,16 +7,16 @@
 *
 */
 Ext.define('AS.view.Viewport', {
-  extend: 'Ext.container.Viewport',
-  requires: [
+  extend : 'Ext.container.Viewport',
+  requires : [
     'AS.view.MainToolbar',
     'AS.view.ProjectsTree',
     'AS.view.components.CodePanel',
     'AS.view.StatusBar'
   ],
-  layout: 'fit',
+  layout : 'fit',
 
-  initComponent: function() {
+  initComponent : function () {
 
     /*
      * We use a fitted inner panel to use the panel's advanced features

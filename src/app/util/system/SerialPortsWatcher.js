@@ -39,7 +39,7 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   */
   applyInterval: function(interval) {
     if(!Ext.isNumber(interval)) {
-      console.log('[SerialPortsWatcher] Error: Interval miust be a number !');
+      console.log('[SerialPortsWatcher] Error: Interval must be a number !');
     } else {
       return interval;
     }
@@ -57,7 +57,7 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
       if(err) {
         console.log(err);
       } else {
-        // Retrive serial ports store
+        // Retrieve serial ports store
         var store = scope.getStore();
 
         // Check if ports count has changed
@@ -94,7 +94,7 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
 
     console.log('[SerialPortsWatcher] Update store with ports list: ', ports);
 
-    // Retrieve serial ports strore
+    // Retrieve serial ports store
     var store = this.getStore();
 
     // Remove all items

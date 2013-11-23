@@ -9,7 +9,9 @@ Ext.define('AS.view.MainToolbar',  {
   extend: 'Ext.Toolbar',
   alias: 'widget.maintoolbar',
   requires: [
-    'AS.view.components.SerialPortSelect'
+    'AS.view.components.SerialPortSelect',
+    'AS.view.components.BoardSelect',
+    'AS.view.components.BaudRateSelect'
   ],
 
   /**

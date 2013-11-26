@@ -34,4 +34,8 @@ cd ..
 
 # remove tmp install dir
 sudo rm -Rf ./install_tmp
+
+# Install codemirror submodule
+git submodule update --init
+
 echo "Post install [Finished]"

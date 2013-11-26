@@ -4,15 +4,15 @@
 */
 Ext.define('AS.utils.RecentFilesManager', {
 
-  config: {
-    store: null
+  config : {
+    store : null
   },
 
 
   /**
   * Default constructor
   */
-  constructor: function(config) {
+  constructor : function (config) {
     this.initConfig(config);
   },
 
@@ -20,12 +20,13 @@ Ext.define('AS.utils.RecentFilesManager', {
   /**
   * Initialize Store
   */
-  applyStore: function(storeId) {
+  applyStore : function (storeId) {
     var store = Ext.data.StoreManager.lookup(storeId);
-    if(store) {
+    if (store) {
       return store;
     }
   },
+
 
   addRecentFile: function(sourceFile) {
 

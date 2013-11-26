@@ -1,6 +1,6 @@
 // NodeJS modules required by System Menu
-var gui     = require('nw.gui');
-var Window  = gui.Window.get();
+var gui    = require('nw.gui');
+var Window = gui.Window.get();
 
 
 /**
@@ -19,7 +19,7 @@ Ext.define('AS.util.system.menu.SystemMenu', {
   /**
   * System Menu Constructor
   */
-  constructor: function(config) {
+  constructor : function (config) {
     this.initConfig(config);
     this.systemMenu = new gui.Menu({ type: 'menubar' });
     this.initMenus();
@@ -29,7 +29,7 @@ Ext.define('AS.util.system.menu.SystemMenu', {
   /**
   * Initialize system menus
   */
-  initMenus: function() {
+  initMenus : function () {
     console.log('[SystemMenu] Initialize system menu.');
     // Set menu as System Menu
     Window.menu = this.systemMenu;
@@ -42,76 +42,78 @@ Ext.define('AS.util.system.menu.SystemMenu', {
   /**
   * Initialize File menu
   */
-  initFileMenu: function() {
+  initFileMenu : function () {
 
     // Create file menu
-    this.fileMenu = new gui.Menu();
-
-    // New file
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Nouveau fichier',
-      click: function(){},
-    }));
-
-    // Open file
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Ouvrir...',
-      click: function(){}
-    }));
+    var fileMenu = this.fileMenu = new gui.Menu();
 
     // Open recent menu
     this.openRecentMenu = new gui.Menu();
     this.openRecentMenu.append(new gui.MenuItem({
-      label: 'Ouvrir le dernier fichier fermé...',
-      click: function(){}
+      label : 'Ouvrir le dernier fichier fermé...',
+      click : function () {}
     }));
-    this.openRecentMenu.append(new gui.MenuItem({ type: 'separator' }));
-    this.fileMenu.append(new gui.MenuItem({ label: 'Ouvrir récent', submenu: this.openRecentMenu }));
+    this.openRecentMenu.append(new gui.MenuItem({ type : 'separator' }));
 
-    // Open folder
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Ouvrir dossier...',
-      click: function() {}
-    }));
 
-    // Separator
-    this.fileMenu.append(new gui.MenuItem({ type: 'separator' }));
+    var items = [
+      // New file
+      {
+        label : 'Nouveau fichier',
+        click : function () {}
+      },
+      // Open file
+      {
+        label : 'Ouvrir...',
+        click : function () {}
+      },
+      // Open recent menu
+      {
+        label   : 'Ouvrir récent',
+        submenu : this.openRecentMenu
+      },
+      // Open folder
+      {
+        label : 'Ouvrir dossier...',
+        click : function () {}
+      },
+      // Separator
+      { type : 'separator' },
+      // Save file
+      {
+        label : 'Enregistrer',
+        click : function () {}
+      },
+      // Save file as
+      {
+        label : 'Enregistrer sous...',
+        click : function () {}
+      },
+      // Save all files
+      {
+        label : 'Enregistrer tout les fichiers',
+        click : function () {}
+      },
+      // Separator
+      { type : 'separator' },
+      // Close file
+      {
+        label : 'Fermer le fichier',
+        click : function () {}
+      },
+      // Close all files
+      {
+        label : 'Fermer tous les fichiers',
+        click : function () {}
+      }
+    ];
 
-    // Save file
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Enregistrer',
-      click: function() {}
-    }));
-
-    // Save file as
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Enregistrer sous...',
-      click: function(){}
-    }));
-
-    // Save all files
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Enregistrer tout les fichiers',
-      click: function() {}
-    }));
-
-    // Separator
-    this.fileMenu.append(new gui.MenuItem({ type: 'separator' }));
-
-    // Close file
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Fermer le fichier',
-      click: function() {}
-    }));
-
-    // Close all files
-    this.fileMenu.append(new gui.MenuItem({
-      label: 'Fermer tous les fichiers',
-      click: function() {}
-    }));
+    items.forEach(function (item) {
+      fileMenu.append(new gui.MenuItem(item));
+    });
 
     // Insert file menu in System Menu
-    this.systemMenu.insert(new gui.MenuItem({ label: 'Fichier', submenu: this.fileMenu}), 1);
+    this.systemMenu.insert(new gui.MenuItem({ label : 'Fichier', submenu : fileMenu}), 1);
   }
 
 });

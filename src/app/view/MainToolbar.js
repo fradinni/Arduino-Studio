@@ -6,27 +6,36 @@
 *
 */
 Ext.define('AS.view.MainToolbar',  {
-  extend: 'Ext.Toolbar',
-  alias: 'widget.maintoolbar',
-  requires: [
-    'AS.view.components.SerialPortSelect'
+  extend : 'Ext.Toolbar',
+  alias  : 'widget.maintoolbar',
+  requires : [
+    'AS.view.components.SerialPortSelect',
+    'AS.view.components.BoardSelect',
+    'AS.view.components.BaudRateSelect'
   ],
-
 
   /**
   * Initialize Main Toolbar
   */
   initComponent : function () {
 
-    this.items = [
-      { text: 'Compile'},
-      { text: 'Upload' },
-      { xtype: 'serialport'},
-      { xtype: 'board'},
-      { xtype: 'baudRate'},
-      '->',
-      { text: 'Serial Monitor'}
-    ];
+    this.items = [{
+      text   : 'Compile',
+      action : 'compile'
+    }, {
+      text   : 'Upload',
+      action : 'upload'
+    }, {
+      xtype  : 'serialport'
+    }, {
+      xtype  : 'board'
+    }, {
+      xtype  : 'baudRate'
+    }, '->', {
+      text   : 'Serial Monitor',
+      action : 'open-serial'
+    }];
+
     this.callParent();
   }
 

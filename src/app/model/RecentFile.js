@@ -3,6 +3,6 @@
 *
 */
 Ext.define('AS.model.RecentFile', {
-  extend: 'Ext.data.Model',
-  fields: ['name', 'path']
+  extend : 'Ext.data.Model',
+  fields : ['name', 'path']
 });

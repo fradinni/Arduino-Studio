@@ -3,7 +3,7 @@
 *
 */
 Ext.define('AS.store.RecentFiles', {
-  extend: 'Ext.data.Store',
-  model: 'AS.model.RecentFile',
-  data: []
+  extend : 'Ext.data.Store',
+  model  : 'AS.model.RecentFile',
+  data   : []
 });

@@ -4,9 +4,10 @@
 *
 */
 Ext.application({
-  name              : 'AS', // Namespace alias for Arduino Studio
-  models            : ['Board', 'BaudRate'],
-  stores            : ['Boards', 'BaudRates'],
+  name        : 'AS', // Namespace alias for Arduino Studio
+  models      : ['Board', 'BaudRate'],
+  stores      : ['Boards', 'BaudRates'],
+  controllers : ['Main'],
 
   // Vars
   serialPortsWatcher  : null,
@@ -16,12 +17,12 @@ Ext.application({
   /**
   * Application Start-up
   */
-  launch: function() {
+  launch : function() {
     console.log('[Arduino Studio] Initializing...');
 
     // Load application config file
     this.appConfig = Ext.create('AS.util.ConfigManager', {
-      file: './config.json'
+      file : './config.json'
     });
 
     // Initialize stores
@@ -29,7 +30,7 @@ Ext.application({
 
     // Initialize Serial Ports Watcher
     this.serialPortsWatcher = Ext.create('AS.util.system.SerialPortsWatcher', {
-      store: 'serialPortsStore'
+      store : 'serialPortsStore'
     });
     this.serialPortsWatcher.start();
 
@@ -52,21 +53,21 @@ Ext.application({
   * be automaticaly registered in StoreManager and
   * referenced with specified 'storeId'.
   */
-  initializeGlobalStores: function() {
+  initializeGlobalStores : function() {
 
     // Initialize Serial Ports Store
     Ext.create('AS.store.SerialPorts', {
-      storeId: 'serialPortsStore'
+      storeId : 'serialPortsStore'
     });
 
     // Initialize Files Tree Store
     Ext.create('AS.store.ProjectsTree', {
-      storeId: 'projectsTreeStore'
+      storeId : 'projectsTreeStore'
     });
 
     // Initialize Recent Files Store
     Ext.create('AS.store.RecentFiles', {
-      storeId: 'recentFilesStore'
+      storeId : 'recentFilesStore'
     });
   }
 });

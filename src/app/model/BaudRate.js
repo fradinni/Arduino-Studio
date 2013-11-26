@@ -3,6 +3,6 @@
 *
 */
 Ext.define('AS.model.BaudRate', {
-  extend: 'Ext.data.Model',
-  fields: ['value', 'name']
+  extend : 'Ext.data.Model',
+  fields : ['value', 'name']
 });

@@ -1,6 +1,6 @@
 // NodeJS modules required by System Menu
-var gui = require('nw.gui');
-var Window = gui.Window.get();
+var gui     = require('nw.gui');
+var Window  = gui.Window.get();
 
 
 /**

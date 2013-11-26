@@ -19,6 +19,7 @@ Ext.application({
   launch: function() {
     console.log('[Arduino Studio] Initializing...');
 
+    // Load application config file
     this.appConfig = Ext.create('AS.util.ConfigManager', {
       file: './config.json'
     });

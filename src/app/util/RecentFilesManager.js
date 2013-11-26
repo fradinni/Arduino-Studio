@@ -27,7 +27,11 @@ Ext.define('AS.utils.RecentFilesManager', {
     }
   },
 
-  addRecentFile: function() {
+  addRecentFile: function(sourceFile) {
+
+  },
+
+  addRecentProject: function(project) {
 
   }
 

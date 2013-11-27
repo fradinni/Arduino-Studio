@@ -92,8 +92,6 @@ Ext.define('AS.util.system.SerialPortsWatcher', {
   */
   _updateStore : function (ports) {
 
-    console.log('[SerialPortsWatcher] Update store with ports list: ', ports);
-
     // Retrieve serial ports strore
     var store = this.getStore();
 

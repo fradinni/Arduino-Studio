@@ -23,12 +23,13 @@ sudo python setup.py install --record ../../ino_installed_files.txt
 # back to tmp install dir
 cd ..
 
-# download ExtJS
-echo "Downloading ExtJS..."
-wget $SENCHA_URL
-unzip ext-4.2.1-gpl.zip
-mv $SENCHA_UNZIPPED_DIR/* ../src/libs/extjs/
-
+if [ ! -f ../src/libs/extjs/ext-all.js ]; then
+  # download ExtJS
+  echo "Downloading ExtJS..."
+  wget $SENCHA_URL
+  unzip ext-4.2.1-gpl.zip
+  mv $SENCHA_UNZIPPED_DIR/* ../src/libs/extjs/
+fi
 # back to root dir
 cd ..
 
